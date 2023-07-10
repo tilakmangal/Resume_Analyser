@@ -31,6 +31,8 @@ class Resumepars:
 
         self.job_check(lemmatized, dfd)
 
+    #This function gives variable growth for different ratios of common elements
+    #It grows rapidly for first 1/3 elements then grows linearly upto 0.75 ratio and then has decreased growth
     def score(self, n):
         if n <= 1 / 3:
             return 3 * n / 2
