@@ -1,0 +1,73 @@
+{% include "header.html" %}
+
+    <!-- Banner start -->
+    <div id="home" class="banner ">
+        <div class="btext">
+            <h1>Looking For a<br>Perfect Job?</h1>
+            <p>We are here to suggest you the most appropriate<br>Jobs according to your resume.</p>
+            <button type="button" ><a href="#jobRecommended">Get Started</a></button>         
+        </div>
+        <div class="bannerimg">
+            <img src="../static/png/image1.png">
+        </div>
+    </div>
+    <!-- Banner end -->
+
+    <!-- work start -->
+    <div id="howitwork" class="work">
+        <div class="ucontainer">
+            <div class="hheading" >
+                <h2>How it Works</h2>
+                <p> Natural language processing (NLP) refers to the branch of computer science—and more specifically, the branch of artificial intelligence or AI—concerned with giving computers the ability to understand text and spoken words in much the same way human beings can.
+                    NLP combines computational linguistics—rule-based modeling of human language—with statistical, machine learning, and deep learning models. Together, these technologies enable computers to process human language in the form of text or voice data and to ‘understand’ its full meaning, complete with the speaker or writer’s intent and sentiment.
+                    NLP drives computer programs that translate text from one language to another, respond to spoken commands, and summarize large volumes of text rapidly—even in real time. There’s a good chance you’ve interacted with NLP in the form of voice-operated GPS systems, digital assistants, speech-to-text dictation software, customer service chatbots, and other consumer conveniences.
+                    But NLP also plays a growing role in enterprise solutions that help streamline business operations, increase employee productivity, and simplify mission-critical business processes.
+                </p>
+            </div>
+    </div>
+    </div>
+          
+    
+    <!-- work end -->
+
+   
+
+    <!-- job start -->
+    {%if ask:%}
+
+    <div class="info-container">
+        <div><h2>Job Recommendations</h2></div>
+        <div class="info-items">Name:  {{person.name().title()}}</div>
+        <div class="info-items">Email:  {{person.email()}}</div>
+        <div class="info-items">Phone Number:  {{person.phone()}}</div>
+            {% for i in range(3) %}
+        <div class="info-items">Job {{i+1}}:  {{person.final_job_scores()[i]}} </div>
+             {% endfor %}
+    </div>
+
+        {%else:%}
+
+    <div class="job" id="jobRecommended">
+        <div class="item">
+            <div class="eheading" >
+                <h3>Upload Your Resume Here!</h3>
+            </div>
+
+            <form action={{url_for('home')}} method="post" accept="application/pdf" enctype="multipart/form-data">
+                <div class="fileinput">
+                    <input type="file" name="resume">
+                </div>
+                <div class="btn">
+                    <input type="submit" value="Upload">
+                </div>
+            </form>
+
+        </div>
+    </div>
+        {%endif%}
+    <!-- <div class="bannerimg">
+        <img src="png/image4.png">
+    </div> -->
+    <!-- job end -->
+
+{% include "footer.html" %}
