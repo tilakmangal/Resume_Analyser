@@ -47,6 +47,5 @@ def convert_pdf_to_text(f_name):
         text += page.get_text()
     return text
 
-
 if __name__ == '__main__':
     app.run()
